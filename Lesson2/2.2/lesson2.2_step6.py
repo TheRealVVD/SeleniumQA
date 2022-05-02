@@ -43,6 +43,8 @@ try:
     button = browser.find_element(By.CSS_SELECTOR, 'button.btn.btn-primary')
     browser.execute_script("return arguments[0].scrollIntoView(true);", button)
     button.click()
+
+
 finally:
     time.sleep(15)
     browser.quit()
