@@ -1,3 +1,13 @@
+'''Задание: загрузка файла
+В этом задании в форме регистрации требуется загрузить текстовый файл.
+
+Напишите скрипт, который будет выполнять следующий сценарий:
+
+Открыть страницу http://suninjuly.github.io/file_input.html
+Заполнить текстовые поля: имя, фамилия, email
+Загрузить файл. Файл должен иметь расширение .txt и может быть пустым
+Нажать кнопку "Submit"
+Если все сделано правильно и быстро, вы увидите окно с числом'''
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
@@ -7,7 +17,6 @@ link = 'http://suninjuly.github.io/file_input.html'
 
 folder_path = os.path.abspath(os.path.dirname('lesson2.2_step8.py'))
 file_path = os.path.join(folder_path, 'text.txt')
-print(file_path)
 
 try:
     browser = webdriver.Chrome()
