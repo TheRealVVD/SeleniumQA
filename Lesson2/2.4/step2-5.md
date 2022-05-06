@@ -21,7 +21,7 @@
 
 Вот как выглядит код автотеста:
 
-```
+```python
 from selenium import webdriver
 
 browser = webdriver.Chrome()
@@ -47,7 +47,7 @@ assert "successful" in message.text
 
 Теперь, когда мы уже знаем, что кнопка появляется с задержкой, мы можем добавить паузу до начала поиска элемента. Мы уже использовали библиотеку time ранее. Давайте применим ее и сейчас:
 
-```
+```python
 from selenium import webdriver
 import time
 
@@ -77,7 +77,7 @@ assert "successful" in message.text
 
 Улучшим наш тест с помощью неявных ожиданий. Для этого нам нужно будет убрать time.sleep() и добавить одну строчку с методом **implicitly wait**:
 
-```
+```python
 from selenium import webdriver
 
 browser = webdriver.Chrome()
