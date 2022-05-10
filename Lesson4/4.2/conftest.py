@@ -15,28 +15,17 @@ def pytest_addoption(parser):
 def browser(request):
     print("\nstart browser for test..")
     language = request.config.getoption("language")
-    browser_name = request.config.getoption("browser_name")
-    if browser_name == "chrome":
-        options = Options()
-        if language == 'es':
-            options.add_experimental_option('prefs', {'intl.accept_languages': 'es'})
-            browser = webdriver.Chrome(options=options)
-        elif language == 'ru':
-            options.add_experimental_option('prefs', {'intl.accept_languages': 'ru'})
-            browser = webdriver.Chrome(options=options)
-        elif language != 'es' or language != 'ru':
-            options.add_experimental_option('prefs', {'intl.accept_languages': language})
-            browser = webdriver.Chrome(options=options)
-    elif browser_name == 'firefox':
-        fp = webdriver.FirefoxProfile()
-        if language == 'es':
-            fp.set_preference("intl.accept_languages", 'es')
-            browser = webdriver.Firefox(firefox_profile=fp)
-        else:
-            fp.set_preference("intl.accept_languages", language)
-            browser = webdriver.Firefox(firefox_profile=fp)
+    options = Options()
+    if language == 'es':
+        options.add_experimental_option('prefs', {'intl.accept_languages': 'es'})
+        browser = webdriver.Chrome(options=options)
+    elif language == 'ru':
+        options.add_experimental_option('prefs', {'intl.accept_languages': 'ru'})
+        browser = webdriver.Chrome(options=options)
+    elif language != 'es' or language != 'ru':
+        options.add_experimental_option('prefs', {'intl.accept_languages': language})
+        browser = webdriver.Chrome(options=options)
     else:
-        raise pytest.UsageError("--browser_name should be chrome or firefox")
         raise pytest.UsageError("--language should be ru or es")
     yield browser
     print("\nquit browser..")
