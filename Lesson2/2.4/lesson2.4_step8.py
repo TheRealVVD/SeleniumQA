@@ -28,7 +28,6 @@ try:
     browser = webdriver.Chrome()
     browser.get(link)
 
-
     # говорим Selenium проверять в течение 12 секунд, пока цена не станет $100
     wait = WebDriverWait(browser, 12)
     price_field = wait.until(
