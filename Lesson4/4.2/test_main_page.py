@@ -1,5 +1,6 @@
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
+from pages.product_page import ProductPage
 
 
 # def go_to_login_page(browser):
@@ -30,6 +31,14 @@ def test_url(browser):
     page.open()
     page.should_be_login_url()
 
+def test_guest_can_add_product_to_basket(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
+    page = ProductPage(browser, link)
+    page.open()
+    page.should_be_buy_button()
+    page.solve_quiz_and_get_code()
+
 # pytest -v --tb=line Lesson4\4.2\test_main_page.py
 # pytest -v --tb=line Lesson4\4.2\test_main_page.py::test_url
+# pytest -v -s --tb=line Lesson4\4.2\test_main_page.py::test_guest_can_add_product_to_basket
 
