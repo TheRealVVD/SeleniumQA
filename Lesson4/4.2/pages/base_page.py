@@ -1,5 +1,8 @@
-from selenium.common.exceptions import NoSuchElementException
+import time
+from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException
 import math
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class BasePage():
     def __init__(self, browser, url, timeout=10):
@@ -28,5 +31,12 @@ class BasePage():
             alert_text = alert.text
             print(f"Your code: {alert_text}")
             alert.accept()
+            # time.sleep(500)
         except NoAlertPresentException:
             print("No second alert presented")
+
+    def wait(self, how, what):
+        wait = WebDriverWait(self.browser, 7)
+        score = wait.until(
+            EC.presence_of_element_located((how, what))
+        )

@@ -185,7 +185,7 @@ Wrong text, got abrakadabra, something wrong
 
 **неправильно:** 
 
-```
+```python
 assert self.catalog_link.text  == "Каталог", \
     f"Wrong language, got {self.catalog_link.text} instead of 'Каталог'" 
 ```
@@ -195,7 +195,7 @@ assert self.catalog_link.text  == "Каталог", \
 "Wrong language, got 'Каталог' instead of 'Каталог'"
 ```
 **правильно:** 
-```
+```python
 catalog_text = self.catalog_link.text # считываем текст и записываем его в переменную
 assert catalog_text == "Каталог", \
     f"Wrong language, got {catalog_text} instead of 'Каталог'" 
