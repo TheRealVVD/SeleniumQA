@@ -232,6 +232,8 @@ def test_guest_should_see_login_link_fail(browser):
 
 [1]: https://stepik.org/lesson/237240/step/2
 
+![img_1.png](img_1.png)
+
 Чтобы указать язык браузера с помощью WebDriver, используйте класс **Options** и метод **add_experimental_option**, как указано в примере ниже:
 
 ```python

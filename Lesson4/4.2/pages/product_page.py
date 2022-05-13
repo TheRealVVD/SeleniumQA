@@ -36,8 +36,12 @@ class ProductPage(BasePage):
         self.wait(*ProductPageLocators.RANDOM_WINDOW)
 
     def should_be_right_url2(self, url):
-        print(self.url)
-        print(self.browser.current_url)
         assert self.url == self.browser.current_url, "Пиздеж чистой воды2"
 
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented"
+
+    def should_dissapeared(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), 'Element is not dissapeared'
 

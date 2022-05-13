@@ -1,6 +1,7 @@
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
 from pages.product_page import ProductPage
+from pages.basket_page import BasketPage
 import pytest
 import time
 
@@ -102,9 +103,66 @@ def test_guest_can_add_product_to_basket4(browser, link):
     page.random_wait()
     page.check()
 
+
+def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.should_be_buy_button()
+    page.should_not_be_success_message()
+
+def test_guest_cant_see_success_message(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.should_not_be_success_message()
+
+def test_message_disappeared_after_adding_product_to_basket(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.should_be_buy_button()
+    page.should_dissapeared()
+
+def test_guest_should_see_login_link_on_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.should_be_login_link()
+
+def test_guest_can_go_to_login_page_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.go_to_login_page()
+
+def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/ru/"
+    page = BasketPage(browser, link)
+    page.open()
+    page.go_to_the_basket()
+    page.should_not_be_items()
+    page.should_be_text()
+
+
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    page = BasketPage(browser, link)
+    page.open()
+    page.go_to_the_basket()
+    page.should_not_be_items()
+    page.should_be_text()
+
 # pytest -v --tb=line Lesson4\4.2\test_main_page.py
 # pytest -v --tb=line Lesson4\4.2\test_main_page.py::test_url
 # pytest -v -s --tb=line Lesson4\4.2\test_main_page.py::test_guest_can_add_product_to_basket
 # pytest -v -s --tb=line Lesson4\4.2\test_main_page.py::test_guest_can_add_product_to_basket2
 # pytest -v -s --tb=line Lesson4\4.2\test_main_page.py::test_guest_can_add_product_to_basket3
 # pytest -v -s --tb=line Lesson4\4.2\test_main_page.py::test_guest_can_add_product_to_basket4
+# pytest -v -s --tb=line Lesson4\4.2\test_main_page.py::test_guest_cant_see_success_message_after_adding_product_to_basket
+# pytest -v -s --tb=line Lesson4\4.2\test_main_page.py::test_guest_cant_see_success_message
+# pytest -v -s --tb=line Lesson4\4.2\test_main_page.py::test_message_disappeared_after_adding_product_to_basket
+# pytest -v -s --tb=line Lesson4\4.2\test_main_page.py::test_guest_should_see_login_link_on_product_page
+# pytest -v -s --tb=line Lesson4\4.2\test_main_page.py::test_guest_can_go_to_login_page_from_product_page
+# pytest -v -s --tb=line Lesson4\4.2\test_main_page.py::test_guest_cant_see_product_in_basket_opened_from_main_page
+# pytest -v -s --tb=line Lesson4\4.2\test_main_page.py::test_guest_cant_see_product_in_basket_opened_from_product_page

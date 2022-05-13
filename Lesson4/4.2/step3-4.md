@@ -76,3 +76,5 @@ def test_guest_can_go_to_login_page(browser):
 4. Убедитесь, что тест проходит, запустив его все той же командой: 
 
 ```pytest -v --tb=line --language=en test_main_page.py```
+
+![img.png](img.png)
